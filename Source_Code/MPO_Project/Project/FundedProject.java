@@ -9,6 +9,11 @@ public class FundedProject extends Project{
 	private String tip_name;
 	
 	private Date tip_year;
+	
+	public FundedProject()
+	{
+		this.tip_name = " ";
+	}
 
 	public Date getDate() {
 		return date;

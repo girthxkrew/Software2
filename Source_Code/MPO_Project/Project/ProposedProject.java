@@ -30,9 +30,19 @@ public class ProposedProject extends Project{
 	
 	private String mpo_id;
 	
-	private final int numOfQuestions = 30;
+	private final int numOfQuestions = 36;
 	
-	private Question[] Questions = new Question [30];
+	private Question[] Questions;
+	
+	public ProposedProject()
+	{
+		this.approved_project_id = " ";
+		this.cn = " ";
+		this.csj = " ";
+		this.mpo_id = " ";
+		this.Questions = new Question[numOfQuestions];
+		this.submission_deadline = " ";
+	}
 
 	public String getApproved_project_id() {
 		return approved_project_id;

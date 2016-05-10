@@ -10,8 +10,10 @@ public class Question {
 	private Date date;
 	private File fileAttachment;
 	
-	public Question(boolean ansr) {
-		ansr = answer;
+	public Question() {
+		this.answer = false;
+		this.numberofcrossing = 0;
+		this.supporting_answer = " ";
 	}
 
 	public int getNumberofcrossing() {
@@ -44,6 +46,14 @@ public class Question {
 
 	public void setFileAttachment(File fileAttachment) {
 		this.fileAttachment = fileAttachment;
+	}
+
+	public boolean isAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(boolean answer) {
+		this.answer = answer;
 	}
 
 }

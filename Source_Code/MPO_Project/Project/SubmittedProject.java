@@ -8,6 +8,15 @@ public class SubmittedProject extends Project{
 	private String state_approval;
 	
 	private String submission_status;
+	
+	public SubmittedProject()
+	{
+		this.tpb_approval = " ";
+		this.federal_approval = " ";
+		this.state_approval = " ";
+		this.submission_status = " ";
+
+	}
 
 	public String getTpb_approval() {
 		return tpb_approval;
