@@ -126,7 +126,7 @@ public class Project {
 		this.sponsoring_agency = " ";
 		
 	}
-	
+
 	public String getAir_quality_analysis_co() {
 		return air_quality_analysis_co;
 	}

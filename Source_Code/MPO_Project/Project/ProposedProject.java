@@ -1,5 +1,7 @@
 package Project;
 
+import java.sql.Date;
+
 public class ProposedProject extends Project{
 
 	private String approved_project_id;
@@ -14,7 +16,7 @@ public class ProposedProject extends Project{
 	
 	private Readiness_Elements element;
 	
-	private date submission_deadline;
+	private Date submission_deadline;
 	
 	private enum Submission_Type {New_Submission, Revision_Approved};
 	
@@ -41,10 +43,8 @@ public class ProposedProject extends Project{
 		this.csj = " ";
 		this.mpo_id = " ";
 		this.Questions = new Question[numOfQuestions];
-		this.submission_deadline = " ";
-		
 	}
-	
+
 	public String getApproved_project_id() {
 		return approved_project_id;
 	}
@@ -61,11 +61,11 @@ public class ProposedProject extends Project{
 		this.element = element;
 	}
 
-	public date getSubmission_deadline() {
+	public Date getSubmission_deadline() {
 		return submission_deadline;
 	}
 
-	public void setSubmission_deadline(date submission_deadline) {
+	public void setSubmission_deadline(Date submission_deadline) {
 		this.submission_deadline = submission_deadline;
 	}
 
