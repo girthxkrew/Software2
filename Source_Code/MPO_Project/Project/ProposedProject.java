@@ -14,7 +14,7 @@ public class ProposedProject extends Project{
 	
 	private Readiness_Elements element;
 	
-	private String submission_deadline;
+	private date submission_deadline;
 	
 	private enum Submission_Type {New_Submission, Revision_Approved};
 	
@@ -42,8 +42,9 @@ public class ProposedProject extends Project{
 		this.mpo_id = " ";
 		this.Questions = new Question[numOfQuestions];
 		this.submission_deadline = " ";
+		
 	}
-
+	
 	public String getApproved_project_id() {
 		return approved_project_id;
 	}
@@ -60,11 +61,11 @@ public class ProposedProject extends Project{
 		this.element = element;
 	}
 
-	public String getSubmission_deadline() {
+	public date getSubmission_deadline() {
 		return submission_deadline;
 	}
 
-	public void setSubmission_deadline(String submission_deadline) {
+	public void setSubmission_deadline(date submission_deadline) {
 		this.submission_deadline = submission_deadline;
 	}
 
