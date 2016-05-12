@@ -4,95 +4,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class UserHandler extends Handler{
-	public boolean edit(Admin userObject){
-		Connection conn = requestConnection("admin");
-		Statement editStmt;
-		Boolean result = false;
-		ResultSet resultVerify;
-		String sql = "UPDATE cs4311team9sp16.Users SET FirstName = '" + userObject.getFirstName()+"', LastName = '"+ userObject.getLastName()+"', Username = '"+ userObject.getUsername()+"',Password = '"+ userObject.getPassword()+"'WHERE FirstName='"+ userObject.getFirstName()+"' AND LastName='"+ userObject.getLastName()+"';";
-		String sqlVerify = "SELECT FirstName, LastName, Username, Password FROM cs4311team9sp16.Users WHERE Username='"+ userObject.getUsername()+"';"; 
-		
-		try{
-		editStmt = conn.createStatement();
-		editStmt.execute(sql);
-		resultVerify = editStmt.executeQuery(sqlVerify);
-		resultVerify.next();
-		if(resultVerify.getString(1).equals(userObject.getFirstName()) && resultVerify.getString(2).equals(userObject.getLastName()) && resultVerify.getString(3).equals(userObject.getUsername()) && resultVerify.getString(4).equals(userObject.getPassword()))
-			result = true;
-		conn.close();
-		}
-		catch(Exception sqlErr){
-			System.out.println("SQL Error: " + sqlErr);
-			return false;
-		}
-		return result;
-	}
-	public boolean edit(MpoLead userObject){
-		Connection conn = requestConnection("admin");
-		Statement editStmt;
-		Boolean result = false;
-		ResultSet resultVerify;
-		String sql = "UPDATE cs4311team9sp16.Users SET FirstName = '" + userObject.getFirstName()+"', LastName = '"+ userObject.getLastName()+"', Username = '"+ userObject.getUsername()+"',Password = '"+ userObject.getPassword()+"'WHERE FirstName='"+ userObject.getFirstName()+"' AND LastName='"+ userObject.getLastName()+"';";
-		String sqlVerify = "SELECT FirstName, LastName, Username, Password FROM cs4311team9sp16.Users WHERE Username='"+ userObject.getUsername()+"';"; 
-		try{
-		editStmt = conn.createStatement();
-		editStmt.execute(sql);
-		resultVerify = editStmt.executeQuery(sqlVerify);
-		resultVerify.next();
-		if(resultVerify.getString(1).equals(userObject.getFirstName()) && resultVerify.getString(2).equals(userObject.getLastName()) && resultVerify.getString(3).equals(userObject.getUsername()) && resultVerify.getString(4).equals(userObject.getPassword()))
-			result = true;
-		conn.close();
-		}
-		catch(Exception sqlErr){
-			System.out.println("SQL Error: " + sqlErr);
-			return false;
-		}
-		return result;
-	}
-	public boolean edit(MpoStaff userObject){
-		Connection conn = requestConnection("admin");
-		Statement editStmt;
-		Boolean result = false;
-		ResultSet resultVerify;
-		String sql = "UPDATE cs4311team9sp16.Users SET FirstName = '" + userObject.getFirstName()+"', LastName = '"+ userObject.getLastName()+"', Username = '"+ userObject.getUsername()+"',Password = '"+ userObject.getPassword()+"'WHERE FirstName='"+ userObject.getFirstName()+"' AND LastName='"+ userObject.getLastName()+"';";
-		String sqlVerify = "SELECT FirstName, LastName, Username, Password FROM cs4311team9sp16.Users WHERE Username='"+ userObject.getUsername()+"';"; 
-		try{
-		editStmt = conn.createStatement();
-		editStmt.execute(sql);
-		resultVerify = editStmt.executeQuery(sqlVerify);
-		resultVerify.next();
-		if(resultVerify.getString(1).equals(userObject.getFirstName()) && resultVerify.getString(2).equals(userObject.getLastName()) && resultVerify.getString(3).equals(userObject.getUsername()) && resultVerify.getString(4).equals(userObject.getPassword()))
-			result = true;
-		conn.close();
-		}
-		catch(Exception sqlErr){
-			System.out.println("SQL Error: " + sqlErr);
-			return false;
-		}
-		return result;
-	}
-	public boolean edit(ProjectLead userObject){
-		Connection conn = requestConnection("admin");
-		Statement editStmt;
-		Boolean result = false;
-		ResultSet resultVerify;
-		String sql = "UPDATE cs4311team9sp16.Users SET FirstName = '" + userObject.getFirstName()+"', LastName = '"+ userObject.getLastName()+"', Username = '"+ userObject.getUsername()+"',Password = '"+ userObject.getPassword()+"'WHERE FirstName='"+ userObject.getFirstName()+"' AND LastName='"+ userObject.getLastName()+"';";
-		String sqlVerify = "SELECT FirstName, LastName, Username, Password FROM cs4311team9sp16.Users WHERE Username='"+ userObject.getUsername()+"';"; 
-		try{
-		editStmt = conn.createStatement();
-		editStmt.execute(sql);
-		resultVerify = editStmt.executeQuery(sqlVerify);
-		resultVerify.next();
-		if(resultVerify.getString(1).equals(userObject.getFirstName()) && resultVerify.getString(2).equals(userObject.getLastName()) && resultVerify.getString(3).equals(userObject.getUsername()) && resultVerify.getString(4).equals(userObject.getPassword()))
-			result = true;
-		conn.close();
-		}
-		catch(Exception sqlErr){
-			System.out.println("SQL Error: " + sqlErr);
-			return false;
-		}
-		return result;
-	}
 	public boolean create(Admin userObject){
 		Connection conn = requestConnection("admin");
 		Statement createStmt;
@@ -185,7 +96,32 @@ public class UserHandler extends Handler{
 		}
 		return result;
 	}
-	public boolean delete(Admin userObject){
+	public boolean edit(Object object){
+		Admin userObject = (Admin)(object);
+		Connection conn = requestConnection("admin");
+		Statement editStmt;
+		Boolean result = false;
+		ResultSet resultVerify;
+		String sql = editQueryBuilder(userObject);
+		String sqlVerify = "SELECT FirstName, LastName, Username, Password FROM cs4311team9sp16.Users WHERE Username='"+ userObject.getUsername()+"';"; 
+		
+		try{
+		editStmt = conn.createStatement();
+		editStmt.execute(sql);
+		resultVerify = editStmt.executeQuery(sqlVerify);
+		resultVerify.next();
+		if(resultVerify.getString(1).equals(userObject.getFirstName()) && resultVerify.getString(2).equals(userObject.getLastName()) && resultVerify.getString(3).equals(userObject.getUsername()) && resultVerify.getString(4).equals(userObject.getPassword()))
+			result = true;
+		conn.close();
+		}
+		catch(Exception sqlErr){
+			System.out.println("SQL Error: " + sqlErr);
+			return false;
+		}
+		return result;
+	}
+	public boolean delete(Object object){
+		Admin userObject = (Admin)(object);
 		Connection conn = requestConnection("admin");
 		Statement deleteStmt;
 		Boolean result = false;
@@ -207,119 +143,101 @@ public class UserHandler extends Handler{
 			return false;
 		}
 		return result;
+	}	
+	public String editQueryBuilder(Object object){
+		Admin userObject = (Admin)(object);
+		String query = "UPDATE cs4311team9sp16.Users SET ";
+		if(!userObject.getFirstName().isEmpty() && userObject.getFirstName() != null)
+			query = query.concat("FirstName = '"+ userObject.getFirstName()+"',");
+		if(!userObject.getLastName().isEmpty() && userObject.getLastName() != null)
+			query = query.concat("LastName = '"+ userObject.getLastName()+"',");
+		if(!userObject.getPassword().isEmpty() && userObject.getPassword() != null)
+			query = query.concat("Password= '"+ userObject.getPassword()+"'");
+		query.concat(";");
+		return query;
 	}
-	public boolean delete(MpoLead userObject){
+	public Admin view(Admin userObject){
 		Connection conn = requestConnection("admin");
-		Statement deleteStmt;
-		Boolean result = false;
-		ResultSet resultVerify;
-		String sql = "DELETE FROM cs4311team9sp16.Users WHERE FirstName = '"+ userObject.getFirstName()+"' AND LastName = '"+ userObject.getLastName()+"';";
-		String sqlVerify = "SELECT FirstName, LastName, Username, Password FROM cs4311team9sp16.Users WHERE Username='"+ userObject.getUsername()+"';"; 
-		
+		Statement getStmt;
+		ResultSet results;
+		String sql = "SELECT * FROM cs4311team9sp16.Users WHERE Username='"+ userObject.getUsername()+"';";
 		try{
-		deleteStmt = conn.createStatement();
-		deleteStmt.execute(sql);
-		resultVerify = deleteStmt.executeQuery(sqlVerify);
-		resultVerify.next();
-		if(!resultVerify.first())
-			result = true;
+		getStmt = conn.createStatement();
+		getStmt.execute(sql);
+		results = getStmt.executeQuery(sql);
+		results.next();
+		userObject.setFirstName(results.getString(1));
+		userObject.setLastName(results.getString(2));
+		userObject.setPassword(results.getString(4));
 		conn.close();
 		}
 		catch(Exception sqlErr){
 			System.out.println("SQL Error: " + sqlErr);
-			return false;
+			return userObject;
 		}
-		return result;
+		return userObject;
 	}
-	public boolean delete(MpoStaff userObject){
+	public MpoStaff view(MpoStaff userObject){
 		Connection conn = requestConnection("admin");
-		Statement deleteStmt;
-		Boolean result = false;
-		ResultSet resultVerify;
-		String sql = "DELETE FROM cs4311team9sp16.Users WHERE FirstName = '"+ userObject.getFirstName()+"' AND LastName = '"+ userObject.getLastName()+"';";
-		String sqlVerify = "SELECT FirstName, LastName, Username, Password FROM cs4311team9sp16.Users WHERE Username='"+ userObject.getUsername()+"';"; 
-		
+		Statement getStmt;
+		ResultSet results;
+		String sql = "SELECT * FROM cs4311team9sp16.Users WHERE Username='"+ userObject.getUsername()+"';";
 		try{
-		deleteStmt = conn.createStatement();
-		deleteStmt.execute(sql);
-		resultVerify = deleteStmt.executeQuery(sqlVerify);
-		resultVerify.next();
-		if(!resultVerify.first())
-			result = true;
+		getStmt = conn.createStatement();
+		getStmt.execute(sql);
+		results = getStmt.executeQuery(sql);
+		results.next();
+		userObject.setFirstName(results.getString(1));
+		userObject.setLastName(results.getString(2));
+		userObject.setPassword(results.getString(4));
 		conn.close();
 		}
 		catch(Exception sqlErr){
 			System.out.println("SQL Error: " + sqlErr);
-			return false;
+			return userObject;
 		}
-		return result;
+		return userObject;
 	}
-	public boolean delete(ProjectLead userObject){
+	public MpoLead view(MpoLead userObject){
 		Connection conn = requestConnection("admin");
-		Statement deleteStmt;
-		Boolean result = false;
-		ResultSet resultVerify;
-		String sql = "DELETE FROM cs4311team9sp16.Users WHERE FirstName = '"+ userObject.getFirstName()+"' AND LastName = '"+ userObject.getLastName()+"';";
-		String sqlVerify = "SELECT FirstName, LastName, Username, Password FROM cs4311team9sp16.Users WHERE Username='"+ userObject.getUsername()+"';"; 
-		
+		Statement getStmt;
+		ResultSet results;
+		String sql = "SELECT * FROM cs4311team9sp16.Users WHERE Username='"+ userObject.getUsername()+"';";
 		try{
-		deleteStmt = conn.createStatement();
-		deleteStmt.execute(sql);
-		resultVerify = deleteStmt.executeQuery(sqlVerify);
-		resultVerify.next();
-		if(!resultVerify.first())
-			result = true;
+		getStmt = conn.createStatement();
+		getStmt.execute(sql);
+		results = getStmt.executeQuery(sql);
+		results.next();
+		userObject.setFirstName(results.getString(1));
+		userObject.setLastName(results.getString(2));
+		userObject.setPassword(results.getString(4));
 		conn.close();
 		}
 		catch(Exception sqlErr){
 			System.out.println("SQL Error: " + sqlErr);
-			return false;
+			return userObject;
 		}
-		return result;
-		
+		return userObject;
 	}
-	public String editQueryBuilder(Admin userObject){
-		String query = "UPDATE cs4311team9sp16.Users SET ";
-		if(!userObject.getFirstName().isEmpty())
-			query = query.concat("FirstName = '"+ userObject.getFirstName()+"'");
-		if(!userObject.getLastName().isEmpty())
-			query = query.concat("LastName = '"+ userObject.getLastName()+"'");
-		if(!userObject.getPassword().isEmpty())
-			query = query.concat("Password= '"+ userObject.getPassword()+"'");
-		query.concat(";");
-		return query;
-	}
-	public String editQueryBuilder(MpoLead userObject){
-		String query = "UPDATE cs4311team9sp16.Users SET ";
-		if(!userObject.getFirstName().isEmpty())
-			query = query.concat("FirstName = '"+ userObject.getFirstName()+"'");
-		if(!userObject.getLastName().isEmpty())
-			query = query.concat("LastName = '"+ userObject.getLastName()+"'");
-		if(!userObject.getPassword().isEmpty())
-			query = query.concat("Password= '"+ userObject.getPassword()+"'");
-		query.concat(";");
-		return query;
-	}
-	public String editQueryBuilder(MpoStaff userObject){
-		String query = "UPDATE cs4311team9sp16.Users SET ";
-		if(!userObject.getFirstName().isEmpty())
-			query = query.concat("FirstName = '"+ userObject.getFirstName()+"'");
-		if(!userObject.getLastName().isEmpty())
-			query = query.concat("LastName = '"+ userObject.getLastName()+"'");
-		if(!userObject.getPassword().isEmpty())
-			query = query.concat("Password= '"+ userObject.getPassword()+"'");
-		query.concat(";");
-		return query;
-	}
-	public String editQueryBuilder(ProjectLead userObject){
-		String query = "UPDATE cs4311team9sp16.Users SET ";
-		if(!userObject.getFirstName().isEmpty())
-			query = query.concat("FirstName = '"+ userObject.getFirstName()+"'");
-		if(!userObject.getLastName().isEmpty())
-			query = query.concat("LastName = '"+ userObject.getLastName()+"'");
-		if(!userObject.getPassword().isEmpty())
-			query = query.concat("Password= '"+ userObject.getPassword()+"'");
-		query.concat(";");
-		return query;
+	public ProjectLead view(ProjectLead userObject){
+		Connection conn = requestConnection("admin");
+		Statement getStmt;
+		ResultSet results;
+		String sql = "SELECT * FROM cs4311team9sp16.Users WHERE Username='"+ userObject.getUsername()+"';";
+		try{
+		getStmt = conn.createStatement();
+		getStmt.execute(sql);
+		results = getStmt.executeQuery(sql);
+		results.next();
+		userObject.setFirstName(results.getString(1));
+		userObject.setLastName(results.getString(2));
+		userObject.setPassword(results.getString(4));
+		conn.close();
+		}
+		catch(Exception sqlErr){
+			System.out.println("SQL Error: " + sqlErr);
+			return userObject;
+		}
+		return userObject;
 	}
 }
