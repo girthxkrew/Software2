@@ -52,7 +52,21 @@ public class ProjectHandler extends Handler{
 				+ projectObject.getLimitFrom().getLongitude() + ", "
 				+ projectObject.getLimitTo().getLatitude() + ", "
 				+ projectObject.getLimitTo().getLongitude() + ");";
-		String sqlVerify =  "SELECT * FROM cs4311team9sp16.Projects WHERE air_quality_analysis_co='"+ projectObject.getAir_quality_analysis_co()+"';"; 
+		String sqlVerify =  "SELECT * FROM cs4311team9sp16.Projects WHERE air_quality_analysis_co='"
+				+ projectObject.getAir_quality_analysis_co()+"';"; 
+		String sql2 = "INSERT INTO cs4311team9sp16.PROPOSEDPROJECT VALUES ('"
+				+ projectObject.getApproved_project_id() +"', "
+				+ projectObject.getElement() + ", '"
+				+ projectObject.getSubmission_deadline() + "', "
+				+ projectObject.getWorkflow_status() + ", '"
+				+ projectObject.getCn() + "', '"
+				+ projectObject.getCsj() + "', "
+				+ projectObject.getFund_type() + ", '"
+				+ projectObject.getMpo_id() + "', '"
+				+ projectObject.getPro_lead_id() + "');"
+				;
+		String sqlVerify2 =  "SELECT * FROM cs4311team9sp16.PROPOSEDPROJECT WHERE approved_project_id='" 
+				+ projectObject.getApproved_project_id()+"';";
 		try{
 			createStmt = conn.createStatement();
 			createStmt.execute(sql);
@@ -92,6 +106,24 @@ public class ProjectHandler extends Handler{
 			{
 				result = true;
 			}
+			createStmt = conn.createStatement();
+			createStmt.execute(sql2);
+			resultVerify = createStmt.executeQuery(sqlVerify2);
+			resultVerify.next();
+			if(resultVerify.getString(1).equals(projectObject.getApproved_project_id())
+				&& resultVerify.getInt(2) == (projectObject.getElement())
+				&& resultVerify.getDate(3).toString().equals(projectObject.getSubmission_deadline().toString())
+				&& resultVerify.getInt(4) == (projectObject.getWorkflow_status())
+				&& resultVerify.getString(5).equals(projectObject.getCn())
+				&& resultVerify.getString(6).equals(projectObject.getCsj())
+				&& resultVerify.getInt(7) == (projectObject.getFund_type())
+				&& resultVerify.getString(8).equals(projectObject.getMpo_id())
+				&& resultVerify.getString(9).equals(projectObject.getPro_lead_id())
+			)
+			{
+				result = true;
+			}
+			
 			conn.close();
 		}
 		catch(Exception sqlErr){

@@ -135,6 +135,7 @@ public class Project {
 		this.state_system = 0;
 		this.type = 0;
 		
+		
 	}
 
 	public String getAir_quality_analysis_co() {
