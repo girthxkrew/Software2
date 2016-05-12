@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class alarmHandler extends Handler{
-	public Date getDeadline(String projectID){
+	public static Date getDeadline(String projectID){
 		Connection conn = requestConnection("admin");
 		// create a java calendar instance
 		Calendar calendar = new GregorianCalendar(2013,0,31);
