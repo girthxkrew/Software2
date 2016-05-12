@@ -10,50 +10,50 @@ public class Project {
 
 	private String air_quality_analysis_voc;
 
-	private enum Area {
-		Regional, West, Northeast, Central, East, Mission, Lower_Valley, New_Mexico
+	private String Area [] = {
+		"Regional", "West", "Northeast", "Central", "East", "Mission", "Lower_Valley", "New_Mexico"
 	};
 
-	private Area area;
+	private int area;
 	
 	private boolean capacity_project;
 
-	private enum City {
-		Anthony_NM, Anthony_TX, Butterfield, Canutillo, Chaparral, 
-		Clint, El_Paso, Fabens, Fort_Bliss, Homestead_Meadows_North, 
-		Homestead_Meadows_South, Horizon_City, La_Union_NM, San_Elizario, 
-		Santa_Teresa, Socorro, Sparks, Sunland_Park, Tornillo, Vinton, Westway
+	public String City [] =  {
+		"Anthony_NM", "Anthony_TX", "Butterfield", "Canutillo", "Chaparral", 
+		"Clint", "El_Paso", "Fabens", "Fort_Bliss", "Homestead_Meadows_North", 
+		"Homestead_Meadows_South", "Horizon_City", "La_Union_NM", "San_Elizario", 
+		"Santa_Teresa", "Socorro", "Sparks", "Sunland_Park", "Tornillo", "Vinton", "Westway"
 	};
 
-	private City city;
+	private int city;
 
-	private enum County {
-		El_Paso, Dona_Ana
+	private String County[] = {
+		"El_Paso", "Dona_Ana"
 	};
 
-	private County county;
+	private int county;
 
-	private enum Dot_District {
-		Texas_District_24, NM_DISTRICT_1, NM_DISTRICT_2
+	private String Dot_District[] = {
+		"Texas_District_24", "NM_DISTRICT_1", "NM_DISTRICT_2"
 	};
 
-	private Dot_District district;
+	private int district;
 
 	private Date federal_fiscal_year;
 
-	private enum Federal_Functional_Classifications {
-		Local, Collector, Minor_Arterial, Principal_Arterial, Major_Arterial,
-		Interstate, Freeway, Expressway, Miscellaneous, Landscape, Signals, 
-		Transit, Enhancements, Bridge, Border_Crossings, Rehabilitation, 
-		Financial, Other, Operations_and_Planning, Rail, Study, Preliminary, 
-		Engineering, Change_Order, _5307_Ops_Planning, _5339_Ops_Planning, Bus_Purchase, Developer
+	private String Federal_Functional_Classifications[] = {
+		"Local", "Collector", "Minor_Arterial", "Principal_Arterial", "Major_Arterial",
+		"Interstate", "Freeway", "Expressway", "Miscellaneous", "Landscape", "Signals", 
+		"Transit", "Enhancements", "Bridge", "Border_Crossings", "Rehabilitation", 
+		"Financial", "Other", "Operations_and_Planning", "Rail", "Study", "Preliminary", 
+		"Engineering", "Change_Order", "_5307_Ops_Planning", "_5339_Ops_Planning", "Bus_Purchase" , "Developer"
 	};
 	
-	private Federal_Functional_Classifications classification;
+	private int classification;
 	
-	private enum Fund_Project_Type {Highway, Roadway, Transit};
+	private String Fund_Project_Type [] = {"Highway", "Roadway", "Transit"};
 	
-	private Fund_Project_Type fund_type;
+	private int fund_type;
 	
 	private String nameOfHighwayorRoadway;
 	
@@ -73,27 +73,27 @@ public class Project {
 	
 	private String project_id;
 	
-	private enum Project_Phase_Identity {Phase_1, Phase_2, Phase_3, No_additional_phase};
+	private String Project_Phase_Identity[] = {"Phase_1", "Phase_2", "Phase_3", "No_additional_phase"};
 	
-	private Project_Phase_Identity identity;
+	private int identity;
 	
-	private enum Project_Phases {Construction, Pre_Engineering, Right_of_Way, Construction_and_Pre_Engineering,
-		Construction_and_Right_of_Way, Construction_Engineering_and_Right_of_Way, Engineering_and_Right_of_Way,
-		FHWA_to_FTA_Transfer, Non_Construction, Environmental_Document, Right_of_Way_Acquired, Right_of_Way_Utilities_Completed};
+	private String Project_Phases[] = {"Construction", "Pre_Engineering", "Right_of_Way", "Construction_and_Pre_Engineering",
+		"Construction_and_Right_of_Way", "Construction_Engineering_and_Right_of_Way", "Engineering_and_Right_of_Way",
+		"FHWA_to_FTA_Transfer", "Non_Construction", "Environmental_Document", "Right_of_Way_Acquired", "Right_of_Way_Utilities_Completed"};
 	
-	private Project_Phases phases;
+	private int phases;
 	
-	private enum Project_Type {
-		Additional_lanes, Administration, Bike, Bikeway, Border_crossing_operations, 
-		Bridge, Bus_purchase, Bus_service, Capital, Change_Order, Developer, Design, 
-		Enhancements, Financial, Freeway, Expressway, Improvements, Intelligent_Transportation_Systems, 
-		Intermodal, Interstates, Landscape, Minor_Arterial, Miscellaneous, Multimodal, New_road, 
-		Operating, Operations_and_planning, Pedestrian, Other, Port_of_entry, Principal_Arterial, 
-		Major_Arterial, Rail, Rehabilitation, Right_of_Way, Roadway_operations, Safety, Signals, 
-		Study, Transit, Transit_operations, Transit_programs, Transit_terminal
+	private String Project_Type[] = {
+		"Additional_lanes", "Administration", "Bike", "Bikeway", "Border_crossing_operations", 
+		"Bridge", "Bus_purchase", "Bus_service", "Capital", "Change_Order", "Developer", "Design", 
+		"Enhancements", "Financial", "Freeway", "Expressway", "Improvements", "Intelligent_Transportation_Systems", 
+		"Intermodal", "Interstates", "Landscape", "Minor_Arterial", "Miscellaneous", "Multimodal", "New_road", 
+		"Operating, Operations_and_planning", "Pedestrian, Other", "Port_of_entry", "Principal_Arterial", 
+		"Major_Arterial", "Rail", "Rehabilitation", "Right_of_Way", "Roadway_operations", "Safety", "Signals", 
+		"Study", "Transit", "Transit_operations", "Transit_programs", "Transit_terminal"
 	};
 	
-	private Project_Type type;
+	private int type;
 	
 	private String remarks;
 	
@@ -103,9 +103,9 @@ public class Project {
 	
 	private String project_name;
 	
-	private enum State_System_Road {ON_STATE_SYSTEM_ROAD, OFF_STATE_SYSTEM_ROAD, ON_OFF_STATE_SYSTEM_ROAD};
+	private String State_System_Road[] = {"ON_STATE_SYSTEM_ROAD", "OFF_STATE_SYSTEM_ROAD", "ON_OFF_STATE_SYSTEM_ROAD"};
 	
-	private State_System_Road state_system;
+	private int state_system;
 	
 	public Project()
 	{
@@ -124,6 +124,16 @@ public class Project {
 		this.remarks = " ";
 		this.scope_of_work = " ";
 		this.sponsoring_agency = " ";
+		this.area = 0;
+		this.city = 0;
+		this.classification = 0;
+		this.county = 0;
+		this.district = 0;
+		this.fund_type = 0;
+		this.identity = 0;
+		this.phases = 0;
+		this.state_system = 0;
+		this.type = 0;
 		
 	}
 
@@ -151,11 +161,11 @@ public class Project {
 		this.air_quality_analysis_voc = air_quality_analysis_voc;
 	}
 
-	public Area getArea() {
+	public int getArea() {
 		return area;
 	}
 
-	public void setArea(Area area) {
+	public void setArea(int area) {
 		this.area = area;
 	}
 
@@ -167,27 +177,27 @@ public class Project {
 		this.capacity_project = capacity_project;
 	}
 
-	public City getCity() {
+	public int getCity() {
 		return city;
 	}
 
-	public void setCity(City city) {
+	public void setCity(int city) {
 		this.city = city;
 	}
 
-	public County getCounty() {
+	public int getCounty() {
 		return county;
 	}
 
-	public void setCounty(County county) {
+	public void setCounty(int county) {
 		this.county = county;
 	}
 
-	public Dot_District getDistrict() {
+	public int getDistrict() {
 		return district;
 	}
 
-	public void setDistrict(Dot_District district) {
+	public void setDistrict(int district) {
 		this.district = district;
 	}
 
@@ -199,19 +209,19 @@ public class Project {
 		this.federal_fiscal_year = federal_fiscal_year;
 	}
 
-	public Federal_Functional_Classifications getClassification() {
+	public int getClassification() {
 		return classification;
 	}
 
-	public void setClassification(Federal_Functional_Classifications classification) {
+	public void setClassification(int classification) {
 		this.classification = classification;
 	}
 
-	public Fund_Project_Type getFund_type() {
+	public int getFund_type() {
 		return fund_type;
 	}
 
-	public void setFund_type(Fund_Project_Type fund_type) {
+	public void setFund_type(int fund_type) {
 		this.fund_type = fund_type;
 	}
 
@@ -287,27 +297,27 @@ public class Project {
 		this.project_id = project_id;
 	}
 
-	public Project_Phase_Identity getIdentity() {
+	public int getIdentity() {
 		return identity;
 	}
 
-	public void setIdentity(Project_Phase_Identity identity) {
+	public void setIdentity(int identity) {
 		this.identity = identity;
 	}
 
-	public Project_Phases getPhases() {
+	public int getPhases() {
 		return phases;
 	}
 
-	public void setPhases(Project_Phases phases) {
+	public void setPhases(int phases) {
 		this.phases = phases;
 	}
 
-	public Project_Type getType() {
+	public int getType() {
 		return type;
 	}
 
-	public void setType(Project_Type type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 
@@ -335,11 +345,11 @@ public class Project {
 		this.sponsoring_agency = sponsoring_agency;
 	}
 
-	public State_System_Road getState_system() {
+	public int getState_system() {
 		return state_system;
 	}
 
-	public void setState_system(State_System_Road state_system) {
+	public void setState_system(int state_system) {
 		this.state_system = state_system;
 	}
 
@@ -351,7 +361,41 @@ public class Project {
 		this.project_name = project_name;
 	}
 	
-	
-	
-	
+	public int indexOf (String[] array, int indexToFind, String toFind)
+	{
+		for (int i = 0; i < array.length; i++) {
+			if(array[i].matches(toFind))
+			{
+				indexToFind = i;
+			}
+		}
+		return indexToFind;
+	}
+	public String[] getAreaArray(){
+		return Area;
+	}
+	public String[] getCountyArray(){
+		return County;
+	}
+	public String[] getDotDistrictArray(){
+		return Dot_District;
+	}
+	public String[] getFederalFunctionalClassificationsArray(){
+		return Federal_Functional_Classifications;
+	}
+	public String[] getProjectPhaseIdentityArray(){
+		return Project_Phase_Identity;
+	}
+	public String[] getProjectPhasesArray(){
+		return Project_Phases;
+	}
+	public String[] getFundProjectTypeArray(){
+		return Fund_Project_Type;
+	}
+	public String[] getProjectTypeArray(){
+		return Project_Type;
+	}
+	public String[] getStateSystemRoad(){
+		return State_System_Road;
+	}
 }

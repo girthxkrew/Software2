@@ -6,25 +6,25 @@ public class ProposedProject extends Project{
 
 	private String approved_project_id;
 	
-	private enum Readiness_Elements {
-		Schematic, Environmental, Document, ROW_Map, 
-		ROW, Utilities, PSandE, Public, Involvement, 
-		District_Review, Agreement, Procurement, Process, 
-		Let_Date, Performance_End, Date, Construction, 
-		Execution, Active, Contract, Delivery, Other
+	private String Readiness_Elements[] =  {
+		"Schematic", "Environmental", "Document", "ROW_Map", 
+		"ROW", "Utilities", "PSandE", "Public", "Involvement", 
+		"District_Review", "Agreement", "Procurement", "Process", 
+		"Let_Date", "Performance_End", "Date", "Construction", 
+		"Execution", "Active", "Contract", "Delivery", "Other"
 	};
 	
-	private Readiness_Elements element;
+	private int element;
 	
 	private Date submission_deadline;
 	
-	private enum Submission_Type {New_Submission, Revision_Approved};
+	private String Submission_Type[] = {"New_Submission", "Revision_Approved"};
 	
-	private Submission_Type submission_status;
+	private int submission_status;
 	
-	private enum WorkFlow_Status {Under_Preparation, Under_Review, Ready_For_Submission, Modification_Required, Submitted_to_TPB};
+	private String WorkFlow_Status[] = {"Under_Preparation", "Under_Review", "Ready_For_Submission", "Modification_Required", "Submitted_to_TPB"};
 	
-	private WorkFlow_Status workflow_status;
+	private int workflow_status;
 	
 	private String cn;
 	
@@ -36,6 +36,8 @@ public class ProposedProject extends Project{
 	
 	private Question[] Questions;
 	
+	private String pro_lead_id;
+	
 	public ProposedProject()
 	{
 		this.approved_project_id = " ";
@@ -43,6 +45,10 @@ public class ProposedProject extends Project{
 		this.csj = " ";
 		this.mpo_id = " ";
 		this.Questions = new Question[numOfQuestions];
+		this.element = 0;
+		this.submission_status = 0;
+		this.workflow_status = 0;
+		this.pro_lead_id = " ";
 	}
 
 	public String getApproved_project_id() {
@@ -53,11 +59,11 @@ public class ProposedProject extends Project{
 		this.approved_project_id = approved_project_id;
 	}
 
-	public Readiness_Elements getElement() {
+	public int getElement() {
 		return element;
 	}
 
-	public void setElement(Readiness_Elements element) {
+	public void setElement(int element) {
 		this.element = element;
 	}
 
@@ -69,19 +75,19 @@ public class ProposedProject extends Project{
 		this.submission_deadline = submission_deadline;
 	}
 
-	public Submission_Type getSubmission_status() {
+	public int getSubmission_status() {
 		return submission_status;
 	}
 
-	public void setSubmission_status(Submission_Type submission_status) {
+	public void setSubmission_status(int submission_status) {
 		this.submission_status = submission_status;
 	}
 
-	public WorkFlow_Status getWorkflow_status() {
+	public int getWorkflow_status() {
 		return workflow_status;
 	}
 
-	public void setWorkflow_status(WorkFlow_Status workflow_status) {
+	public void setWorkflow_status(int workflow_status) {
 		this.workflow_status = workflow_status;
 	}
 
@@ -117,7 +123,28 @@ public class ProposedProject extends Project{
 		Questions = questions;
 	}
 	
+	public String[] getReadinessElements()
+	{
+		return Readiness_Elements;
+	}
 	
+	public String[] getSubmissionType()
+	{
+		return Submission_Type;
+	}
+	
+	public String[] getWorkFlowStatus()
+	{
+		return WorkFlow_Status;
+	}
+
+	public String getPro_lead_id() {
+		return pro_lead_id;
+	}
+
+	public void setPro_lead_id(String pro_lead_id) {
+		this.pro_lead_id = pro_lead_id;
+	}
 	
 	
 }
