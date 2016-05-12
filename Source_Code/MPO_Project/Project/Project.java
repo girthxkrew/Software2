@@ -16,7 +16,7 @@ public class Project {
 
 	private int area;
 	
-	private boolean capacity_project;
+	private int capacity_project;
 
 	public String City [] =  {
 		"Anthony_NM", "Anthony_TX", "Butterfield", "Canutillo", "Chaparral", 
@@ -112,7 +112,7 @@ public class Project {
 		this.air_quality_analysis_co = " ";
 		this.air_quality_analysis_nox = " ";
 		this.air_quality_analysis_voc = " ";
-		this.capacity_project = false;
+		this.capacity_project = 0;
 		this.limitFrom = new Coordinate();
 		this.limitTo = new Coordinate();
 		this.nameOfHighwayorRoadway = " ";
@@ -169,11 +169,11 @@ public class Project {
 		this.area = area;
 	}
 
-	public boolean isCapacity_project() {
+	public int getCapacity_project() {
 		return capacity_project;
 	}
 
-	public void setCapacity_project(boolean capacity_project) {
+	public void setCapacity_project(int capacity_project) {
 		this.capacity_project = capacity_project;
 	}
 
