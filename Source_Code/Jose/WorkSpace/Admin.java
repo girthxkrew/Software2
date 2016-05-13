@@ -30,6 +30,7 @@ public class Admin extends User {
     
     /*Determine the type of user that needs to be created & return and empty object of that user*/
     private RegisteredUser typeOfUser(String userType){
+        //THIS SWITCH STATEMENT MAY NEED TO BE IN THE JSP INSTEAD OF IN THIS CLASS
         switch(userType){
             case "mpo staff":
                 MPOStaff mpoStaff= new MPOStaff();
@@ -63,21 +64,43 @@ public class Admin extends User {
      private boolean pushToDB(RegisteredUser user){
          //call the database manager with number 2 to insert this new user into the database
         DatabaseManager userPush = new DatabaseManager();
-        
-         return true;
+        RegisteredUser result;
+        result = userPush.databaseRequest((MPOStaff) user, 2);
+         return result != null;
      }
-    
+     
+     /*admin version, which can be a little different*/
+    private boolean pushToDB(Admin user) {
+        //call the database manager with number 2 to insert this new user into the database
+        DatabaseManager userPush = new DatabaseManager();
+        Admin result;
+        result = userPush.databaseRequest(user, 2);
+        return result != null; //true if creation succeeded, false otherwise
+    }
+
      /*removes a user from the database (needs username to be set)!*/
      private boolean deleteFromDB(RegisteredUser user){
          //call database manager with number 3
-         return true;
+         DatabaseManager userDelete = new DatabaseManager();
+         RegisteredUser result = (MPOStaff) userDelete.databaseRequest((MPOStaff) user, 3);
+         return result != null; //true if deletion succeeded, false otherwise
      }
      
      /*kind of like create user. Need to have some attribute sets in order for effects to take change*/
      private boolean editUser(RegisteredUser user){
          //call the database manager with number 1
-         return true;
+         DatabaseManager userEdit = new DatabaseManager();
+         RegisteredUser result = (MPOStaff) userEdit.databaseRequest((MPOStaff) user, 1);
+         return result != null;
      }
+     
+     /*kind of like create user. Admin version is a little different*/
+    private boolean editUser(Admin user) {
+        //call the database manager with number 1
+        DatabaseManager userEdit = new DatabaseManager();
+        Admin result = userEdit.databaseRequest(user, 1);
+        return result != null;
+    }
 
 
     /**
