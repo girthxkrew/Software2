@@ -2,7 +2,7 @@ package Project;
 
 import java.sql.Date;
 
-public class TransitProposedProject extends Project {
+public class TransitProposedProject extends ProposedProject {
 
 	private Date apportionment_year;
 	
