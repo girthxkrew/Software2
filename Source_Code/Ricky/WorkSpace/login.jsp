@@ -18,52 +18,79 @@
         String password = request.getParameter("password");
         boolean realUser = Authenticator.checkCredentials(username,password);
         
-        User pepito;
+        //User pepito;
         
     	if(realUser){
     		
 	        switch(usertype){
-	        	case "mpoLead": pepito = new MPOLead(); 
-	        		break;
-	        	case "mpoStaff": pepito = new MPOStaff(); 
-	        		break;
-	        	case "admin": pepito = new Admin(); 
-	        		break;
-	        	case "projectLead": pepito = new ProjectLead(); 
-        			break;
+	        	case "mpoLead": MPOLead mpoLead = new MPOLead(); 
+		        	mpoLead.setUserType(usertype);
+			        mpoLead.setPassword(password);
+			        mpoLead.setUserName(username);
+			        
+			        MPOLead newPepito = DatabaseManager.DatabaseRequest(mpoLead,0);
+			        
+			        if(newPepito == null){
+			        	out.println("<h2>We couldn't log you in.<h2/>");	
+			        	response.setStatus(response.SC_MOVED_TEMPORARILY);
+			        	response.setHeader("Location", "p1.html"); 
+			        }else{
+			        	session.setAttribute("user",newPepito);
+			        	response.setStatus(response.SC_MOVED_TEMPORARILY);
+			        	response.setHeader("Location", "../dashBoards/MpoLeadDashboard/p1.html");
+			        } 
+	        	case "mpoStaff": MPOStaff mpoStaff = new MPOStaff(); 
+		        	mpoStaff.setUserType(usertype);
+		        	mpoStaff.setPassword(password);
+		        	mpoStaff.setUserName(username);
+			        
+			        MPOStaff newPepito = DatabaseManager.DatabaseRequest(mpoStaff,0);
+			        
+			        if(newPepito == null){
+			        	out.println("<h2>We couldn't log you in.<h2/>");	
+			        	response.setStatus(response.SC_MOVED_TEMPORARILY);
+			        	response.setHeader("Location", "p1.html"); 
+			        }else{
+			        	session.setAttribute("user",newPepito);
+			        	response.setStatus(response.SC_MOVED_TEMPORARILY);
+			        	response.setHeader("Location", "../dashBoards/MpoLeadDashboard/p1.html");
+			        }
+	        	case "admin": Admin admin = new Admin(); 
+	        		admin.setUserType(usertype);
+	        		admin.setPassword(password);
+	        		admin.setUserName(username);
+			        
+			        Admin newPepito = DatabaseManager.DatabaseRequest(admin,0);
+			        
+			        if(newPepito == null){
+			        	out.println("<h2>We couldn't log you in.<h2/>");	
+			        	response.setStatus(response.SC_MOVED_TEMPORARILY);
+			        	response.setHeader("Location", "p1.html"); 
+			        }else{
+			        	session.setAttribute("user",newPepito);
+			        	response.setStatus(response.SC_MOVED_TEMPORARILY);
+			        	response.setHeader("Location", "../dashBoards/MpoLeadDashboard/p1.html");
+			        }
+	        	case "projectLead": ProjectLead projectLead = new ProjectLead(); 
+	        		projectLead.setUserType(usertype);
+	        		projectLead.setPassword(password);
+	        		projectLead.setUserName(username);
+			        
+			        ProjectLead newPepito = DatabaseManager.DatabaseRequest(projectLead,0);
+			        if(newPepito == null){
+			        	out.println("<h2>We couldn't log you in.<h2/>");	
+			        	response.setStatus(response.SC_MOVED_TEMPORARILY);
+			        	response.setHeader("Location", "p1.html"); 
+			        }else{
+			        	session.setAttribute("user",newPepito);
+			        	response.setStatus(response.SC_MOVED_TEMPORARILY);
+			        	response.setHeader("Location", "../dashBoards/MpoLeadDashboard/p1.html");
+			        }
 	    	}
 	        
-	        pepito.setUserType(userType);
-	        pepito.setPassword(username);
-	        pepito.setUserName(password);
 	        
-	        User newPepito = DatabaseManager.DatabaseRequest(pepito,0);
     	}
-        if(newPepito == null){
-        	out.println("<h2>We couldn't log you in.<h2/>");	
-        	response.setStatus(response.SC_MOVED_TEMPORARILY);
-        	response.setHeader("Location", "p1.html"); 
-        }else{
-        	session.setAttribute("user",newPepito);
-	        switch(usertype){
-	        	case "mpoLead": 
-		        	response.setStatus(response.SC_MOVED_TEMPORARILY);
-		        	response.setHeader("Location", "../dashBoards/MpoLeadDashboard/p1.html");
-	        		break;
-	        	case "mpoStaff": 
-		        	response.setStatus(response.SC_MOVED_TEMPORARILY);
-		        	response.setHeader("Location", "../dashBoards/MpoStaffDashboard/p1.html"); 
-	        		break;
-	        	case "admin": 
-		        	response.setStatus(response.SC_MOVED_TEMPORARILY);
-		        	response.setHeader("Location", "../dashBoards/AdminDashboard/p1.html"); 
-	        		break;
-	        	case "projectLead": 
-		        	response.setStatus(response.SC_MOVED_TEMPORARILY);
-		        	response.setHeader("Location", "../dashBoards/ProjectLeadDashboard/p1.html");
-	    			break;
-    		} 
-        }  	    
+         	    
             
                         
         %>
