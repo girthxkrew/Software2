@@ -3,41 +3,67 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testpackage;
+package ProjectBackend.UserSubsystem;
+
+import ProjectBackend.ReportSubsystem.*;
+import ProjectBackend.ProjectSubsystem.*;
 
 /**
- * Some class I made up to show how jsp works
+ *
  * @author Jose
  */
-public class User {
-    String name;
-    String address;
-    String id;
+public abstract class User {
+    //view projects (project (5))
+    //view reports (reports (14))
+
+    private String firstName;
+    private String lastName;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    /*I decided to have 2 methods for different reports that you want to view instead of just a 1 that returns a generic
+        report class, due to the fact that fields can be lost
+    */
+    public MTPReport viewMTPReport(String year) {
+        //CALL REPORT HERE
+    }
     
-    public User(){
-        
+    public TIPReport viewTIPReport(String year) {
+        //CALL SOME REPORT METHOD HERE
     }
-    public void setName(String name){
-        this.name = name;
-    }
+
     
-    public void setAddress(String address){
-        this.address = address;
+    /*I decided to create a method for each type of project that wants to be viewed, that way there are no fields lost with a 
+        generic type
+     */
+    public TransitFundedProject viewTransitFundedProject(String projectID) {
+        //CALL PROJECT HERE
     }
-    
-    public void setId (String id){
-        this.id = id;
+
+    public SubmittedProject viewSubmittedProject(String projectID) {
+        //CALL PROJECT HERE
     }
-    
-    public String getName(){
-        return name;
+
+    public ProposedProject viewProposedProject(String projectID) {
+        //CALL PROJECT HERE
     }
-    
-    public String getAddress(){
-        return address;
+
+    public FundedProject viewFundedProject(String projectID) {
+        //CALL PROJECT HERE
     }
-    
-    public String getId (){
-        return id;
-    }
+
 }
