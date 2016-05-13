@@ -11,7 +11,7 @@ public class TransitFundedProject extends FundedProject {
 	public TransitFundedProject() {
 		this.tdc_award_amount = " ";
 	}
-
+	
 	public String getTdc_award_amount() {
 		return tdc_award_amount;
 	}

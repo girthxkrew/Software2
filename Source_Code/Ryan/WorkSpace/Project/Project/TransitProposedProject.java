@@ -2,7 +2,7 @@ package Project;
 
 import java.sql.Date;
 
-public class TransitProposedProject extends Project {
+public class TransitProposedProject extends ProposedProject {
 
 	private Date apportionment_year;
 	
@@ -10,9 +10,9 @@ public class TransitProposedProject extends Project {
 	
 	private String tcd_amount_requested;
 	
-	private enum Transit_Project_Type {Capital, Operating, Planning, Administration};
+	private String Transit_Project_Type[] = {"Capital", "Operating", "Planning", "Administration"};
 	
-	private Transit_Project_Type tptype;
+	private int tptype;
 	
 	public TransitProposedProject() {
 		this.section_5309ID = " ";
@@ -43,12 +43,17 @@ public class TransitProposedProject extends Project {
 		this.tcd_amount_requested = tcd_amount_requested;
 	}
 
-	public Transit_Project_Type getTptype() {
+	public int getTptype() {
 		return tptype;
 	}
 
-	public void setTptype(Transit_Project_Type tptype) {
+	public void setTptype(int tptype) {
 		this.tptype = tptype;
+	}
+	
+	public String[] getTransitProjectType()
+	{
+		return Transit_Project_Type;
 	}
 
 }

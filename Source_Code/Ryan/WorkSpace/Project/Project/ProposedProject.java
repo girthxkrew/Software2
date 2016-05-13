@@ -45,9 +45,9 @@ public class ProposedProject extends Project{
 		this.csj = " ";
 		this.mpo_id = " ";
 		this.Questions = new Question[numOfQuestions];
-		this.element = 0;
-		this.submission_status = 0;
-		this.workflow_status = 0;
+		this.element = -1;
+		this.submission_status = -1;
+		this.workflow_status = -1;
 		this.pro_lead_id = " ";
 	}
 
