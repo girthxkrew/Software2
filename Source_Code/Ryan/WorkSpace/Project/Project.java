@@ -362,8 +362,9 @@ public class Project {
 		this.project_name = project_name;
 	}
 	
-	public int indexOf (String[] array, int indexToFind, String toFind)
+	public int indexOf (String[] array, String toFind)
 	{
+		int indexToFind = 0;
 		for (int i = 0; i < array.length; i++) {
 			if(array[i].matches(toFind))
 			{
