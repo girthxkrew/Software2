@@ -573,10 +573,10 @@ public class ProjectHandler extends Handler{
 		getStmt.execute(sql2);
 		r = getStmt.executeQuery(sql2);
 		r.next();
-		projectObject.setApportionment_year(r.getDate(1));
-		projectObject.setSection_5309ID(r.getString(2));
-		projectObject.setTcd_amount_requested(r.getString(3));
-		projectObject.setTptype(r.getInt(4));
+		projectObject.setApportionment_year(r.getDate(2));
+		projectObject.setSection_5309ID(r.getString(3));
+		projectObject.setTcd_amount_requested(r.getString(4));
+		projectObject.setTptype(r.getInt(5));
 		conn.close();
 		}
 		catch(Exception sqlErr){
