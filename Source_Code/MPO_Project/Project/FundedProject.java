@@ -8,6 +8,10 @@ public class FundedProject extends Project{
 	
 	private String tip_name;
 	
+	private String cn;
+	
+	private String csj;
+	
 	private Date tip_year;
 	
 	public FundedProject()
@@ -37,6 +41,22 @@ public class FundedProject extends Project{
 
 	public void setTip_year(Date tip_year) {
 		this.tip_year = tip_year;
+	}
+
+	public String getCn() {
+		return cn;
+	}
+
+	public void setCn(String cn) {
+		this.cn = cn;
+	}
+
+	public String getCsj() {
+		return csj;
+	}
+
+	public void setCsj(String csj) {
+		this.csj = csj;
 	}
 	
 }

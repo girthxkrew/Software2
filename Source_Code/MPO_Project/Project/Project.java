@@ -16,7 +16,7 @@ public class Project {
 
 	private int area;
 	
-	private int capacity_project;
+	private boolean capacity_project;
 
 	public String City [] =  {
 		"Anthony_NM", "Anthony_TX", "Butterfield", "Canutillo", "Chaparral", 
@@ -112,28 +112,29 @@ public class Project {
 		this.air_quality_analysis_co = " ";
 		this.air_quality_analysis_nox = " ";
 		this.air_quality_analysis_voc = " ";
-		this.capacity_project = 0;
+		this.capacity_project = false;
 		this.limitFrom = new Coordinate();
 		this.limitTo = new Coordinate();
 		this.nameOfHighwayorRoadway = " ";
-		this.number_of_existing_lanes = 0;
-		this.number_of_miles = 0;
-		this.number_of_project_lanes = 0;
+		this.number_of_existing_lanes = -1;
+		this.number_of_miles = -1;
+		this.number_of_project_lanes = -1;
 		this.project_description = " ";
 		this.project_id = " ";
 		this.remarks = " ";
 		this.scope_of_work = " ";
 		this.sponsoring_agency = " ";
-		this.area = 0;
-		this.city = 0;
-		this.classification = 0;
-		this.county = 0;
-		this.district = 0;
-		this.fund_type = 0;
-		this.identity = 0;
-		this.phases = 0;
-		this.state_system = 0;
-		this.type = 0;
+		this.area = -1;
+		this.city = -1;
+		this.classification = -1;
+		this.county = -1;
+		this.district = -1;
+		this.fund_type = -1;
+		this.identity = -1;
+		this.phases = -1;
+		this.state_system = -1;
+		this.type = -1;
+		
 		
 	}
 
@@ -169,11 +170,11 @@ public class Project {
 		this.area = area;
 	}
 
-	public int getCapacity_project() {
+	public boolean isCapacity_project() {
 		return capacity_project;
 	}
 
-	public void setCapacity_project(int capacity_project) {
+	public void setCapacity_project(boolean capacity_project) {
 		this.capacity_project = capacity_project;
 	}
 
@@ -361,8 +362,9 @@ public class Project {
 		this.project_name = project_name;
 	}
 	
-	public int indexOf (String[] array, int indexToFind, String toFind)
+	public int indexOf (String[] array, String toFind)
 	{
+		int indexToFind = 0;
 		for (int i = 0; i < array.length; i++) {
 			if(array[i].matches(toFind))
 			{
