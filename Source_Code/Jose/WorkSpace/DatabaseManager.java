@@ -6,7 +6,7 @@
 package ProjectBackend.DatabaseSubsystem;
 import ProjectBackend.UserSubsystem.*;
 import ProjectBackend.ReportSubsystem.Report;
-import ProjectBackend.ProjectSubsystem.Project;
+import ProjectBackend.ProjectSubsystem.*;
 /**
  * Monstrous class that was sealed long ago by the heroes of light. Now that the seal has broken, it has 
  * unleashed its rage on the poor peasants of Software 2.
@@ -40,6 +40,112 @@ public class DatabaseManager {
         return artifact;
     }
     
+    public ProposedProject databaseRequest(ProposedProject artifact, int action){
+        //do stuff related to project requests
+       ProjectHandler handleProject = new ProjectHandler( );
+        switch(action){
+            case 0:
+                //retrieve a project (only needs project id to be set)
+                if(artifact.getProject_id() == null){
+                    return null;
+                }
+                return handleProject.view(artifact);
+            case 1:
+                //update user information (needs some fields set?)
+                if(artifact.getProject_id() == null){
+                    return null;
+                }
+                //handleProject.edit(artifact); //no edit :(
+                return artifact;
+            case 2:
+                //create a user (needs all (or most) fields set)
+                if(artifact.getProject_id() == null){
+                    return null;
+                }
+                
+                if(handleProject.create(artifact)){
+                    return artifact;
+                }
+                return null;
+            case 3:
+                //delete a user (only needs project id to be set)
+                if(artifact.getProject_id() == null){
+                    return null;
+                }
+                if(handleProject.delete(artifact)){
+                    return artifact;
+                }
+                 return null;
+        }
+        return artifact;
+    }
+    
+      public SubmittedProject databaseRequest(SubmittedProject artifact, int action){
+        //do stuff related to project requests
+       ProjectHandler handleProject = new ProjectHandler( );
+        switch(action){
+            case 0:
+                //retrieve a project (only needs project id to be set)
+                if(artifact.getProject_id() == null){
+                    return null;
+                }
+                //return handleProject.view(artifact);
+            case 1:
+                //update user information (needs some fields set?)
+                if(artifact.getProject_id() == null){
+                    return null;
+                }
+               // handleProject.edit(artifact);
+                return artifact;
+            case 2:
+                //create a user (needs all (or most) fields set)
+                if(artifact.getProject_id() == null){
+                    return null;
+                }
+                //handleProject.create(artifact);
+            case 3:
+                //delete a user (only needs project id to be set)
+                if(artifact.getProject_id() == null){
+                    return null;
+                }
+                //handleProject.delete(artifact);
+        }
+        return artifact;
+    }
+    
+     public FundedProject databaseRequest(FundedProject artifact, int action){
+        //do stuff related to project requests
+       ProjectHandler handleProject = new ProjectHandler( );
+        switch(action){
+            case 0:
+                //retrieve a project (only needs project id to be set)
+                if(artifact.getProject_id() == null){
+                    return null;
+                }
+                //return handleProject.view( );
+            case 1:
+                //update user information (needs some fields set?)
+                if(artifact.getProject_id() == null){
+                    return null;
+                }
+               // handleProject.edit( );
+                return artifact;
+            case 2:
+                //create a user (needs all (or most) fields set)
+                if(artifact.getProject_id() == null){
+                    return null;
+                }
+               // handleProject.create( )
+            case 3:
+                //delete a user (only needs project id to be set)
+                if(artifact.getProject_id() == null){
+                    return null;
+                }
+                //handleProject.delete( )
+        }
+        return artifact;
+    }
+            
     public ProjectLead databaseRequest (ProjectLead artifact, int action){
         //do stuff related to user requests
         UserHandler handleUser = new UserHandler( );
@@ -52,6 +158,9 @@ public class DatabaseManager {
                 return handleUser.view(artifact);
             case 1:
                 //update user information (needs some fields set?)
+                if (artifact.getUsername() == null) {
+                    return null;
+                }
                 handleUser.edit(artifact);
                 return artifact;
             case 2:
@@ -60,16 +169,24 @@ public class DatabaseManager {
                             || artifact.getUsername() == null ||artifact.getPassword() == null ){
                     return null;
                 }
-                handleUser.create(artifact);
-                return artifact;
+                
+                boolean isCreated = handleUser.create(artifact);
+                
+                if(isCreated){
+                    return artifact;
+                }
+                return null;
                 
             case 3:
                 //delete a user (only needs username field to be set)
                 if (artifact.getUsername() == null) {
                     return null;
                 }
-                handleUser.delete(artifact);
-                return artifact;
+                
+                if(handleUser.delete(artifact)){
+                    return artifact;
+                }
+                return null;
                 
             default:
                 System.out.println("Wrong action given.");
@@ -90,6 +207,9 @@ public class DatabaseManager {
                 return handleUser.view(artifact);
             case 1:
                 //update user information (needs some fields set?)
+                if(artifact.getUsername() == null){
+                    return null;
+                }
                 handleUser.edit(artifact);
                 return artifact;
             case 2:
@@ -98,8 +218,11 @@ public class DatabaseManager {
                             || artifact.getUsername() == null ||artifact.getPassword() == null ){
                     return null;
                 }
-                handleUser.create(artifact);
-                return artifact;
+                boolean isCreated = handleUser.create(artifact);
+                if(isCreated){
+                    return artifact;
+                }
+                return null;
                 
             case 3:
                 //delete a user (only needs username field to be set)
@@ -128,6 +251,9 @@ public class DatabaseManager {
                 return handleUser.view(artifact);
             case 1:
                 //update user information (needs some fields set?)
+                if(artifact.getUsername() == null){
+                    return null;
+                }
                 handleUser.edit(artifact);
                 return artifact;
             case 2:
@@ -154,7 +280,7 @@ public class DatabaseManager {
         
     }
     
-        public Admin databaseRequest (Admin artifact, int action){
+    public Admin databaseRequest (Admin artifact, int action){
         //do stuff related to user requests
         //do stuff related to user requests
         UserHandler handleUser = new UserHandler( );
@@ -167,6 +293,9 @@ public class DatabaseManager {
                 return handleUser.view(artifact);
             case 1:
                 //update user information (needs some fields set?)
+                if(artifact.getUsername() == null){
+                    return null;
+                }
                 handleUser.edit(artifact);
                 return artifact;
             case 2:
@@ -175,15 +304,19 @@ public class DatabaseManager {
                             || artifact.getUsername() == null ||artifact.getPassword() == null ){
                     return null;
                 }
-                handleUser.create(artifact);
-                return artifact;
+                boolean isCreated = handleUser.create(artifact);
+                
+                if(isCreated){
+                    return artifact;
+                }
+                return null;
                 
             case 3:
                 //delete a user (only needs username field to be set)
                 if (artifact.getUsername() == null) {
                     return null;
                 }
-                handleUser.delete(artifact);
+                //handleUser.delete(artifact);
                 return artifact;
                 
             default:
@@ -210,10 +343,11 @@ public class DatabaseManager {
     public String databaseRequest (String artifact, int action){
         //this is for authenticator to use, it has special functionality to just get a password
         assert action == 0; //action should be only 0
-        
         UserHandler passwordGet = new UserHandler();
-        Admin dummyObject = passwordGet.view(new Admin ()); //just need to get a password out of this
-        String databasePassword = dummyObject.getPassword(); //call handler to take care of this
+        Admin dummyObject = new Admin( );
+        dummyObject.setUsername(artifact);//just need to get a password out of this
+        Admin dummyObject2 = passwordGet.view(dummyObject);
+        String databasePassword = dummyObject2.getPassword(); //call handler to take care of this
         return databasePassword;
         
     }
